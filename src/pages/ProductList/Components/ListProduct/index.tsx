@@ -6,15 +6,16 @@ import { DtoProduct } from "../../../../service/mks/herokuapp/DtoProductsRespons
 interface ListProductProps {
   products?: DtoProduct[];
   loading: boolean;
+  onBuy: (items: DtoProduct[]) => void
+  list: DtoProduct[]
 }
 
 export function ListProduct(props: ListProductProps) {
-  console.log(props);
   return (
     <S.Container>
       <S.Grid>
         {props.products?.map((item) => (
-          <Card key={item.id} product={item}  />
+          <Card key={item.id} product={item} onBuy={props.onBuy} list={props.list}  />
         ))}
       </S.Grid>
     </S.Container>
